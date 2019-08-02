@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    vuex{{$store.count}}
+    vuex{{$store.state.count}}
     <button type="button" @click="increment">加</button>
     <button type="button" @click="decrement">减</button>
   </div>
