@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    vuex{{$store.state.count}}
+    vuex{{$store.state.test.count}}
     <button type="button" @click="increment">加</button>
     <button type="button" @click="decrement">减</button>
   </div>
@@ -11,16 +11,12 @@ import { mapActions } from 'vuex'
 export default {
   name: 'HelloWorld',
   data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    return {}
   },
-  methods: mapActions([
-    'increment',
-    'decrement'
-  ])
+  methods: mapActions(
+    'test', ['increment', 'decrement']
+  )
 }
 </script>
 <style scoped>
-
 </style>
