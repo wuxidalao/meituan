@@ -10,7 +10,7 @@ router.get('/', function (ctx, next) {
 router.get('/bar', function (ctx, next) {
   ctx.body = 'this is a users/bar response'
 })
-
+// 添加
 router.post('/addPerson', async function (ctx) {
   const person = new Person({
     name: ctx.request.body.name,
@@ -28,16 +28,23 @@ router.post('/addPerson', async function (ctx) {
   }
 })
 
-router.post('/getPerson', async function(ctx){
-  const result = await Person.findOne({name:ctx.request.body.name})
-  const results = await Person.find({name:ctx.request.body.name})
+// 获取所有数据
+router.post('/getsPerson', async function(ctx){
+  const results = await Person.find()
   ctx.body = {
     code: 0,
-    result,
     results
   }
 })
-
+// 获取一个
+router.post('/getPerson', async function(ctx){
+  const result = await Person.findOne({name:ctx.request.body.name})
+  ctx.body = {
+    code: 0,
+    result
+  }
+})
+// 更新
 router.post('/updatePerson', async function(ctx){
   const result = await Person.where({
     name:ctx.request.body.name}).update({
@@ -47,7 +54,7 @@ router.post('/updatePerson', async function(ctx){
     code: 0
   }
 })
-
+// 删除
 router.post('/removePerson', async function(ctx){
   const result = await Person.where({
     name:ctx.request.body.name}).remove()

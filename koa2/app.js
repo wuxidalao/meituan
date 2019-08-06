@@ -9,11 +9,20 @@ const logger = require('koa-logger')
 const mongoose = require('mongoose')
 const dbConfig = require('./dbs/config')
 
+const session = require('koa-generic-session')
+const Redis = require('koa-redis')
+
 const index = require('./routes/index')
 const users = require('./routes/users')
 
 // error handler
 onerror(app)
+app.keys = ['keys','keyskeys']
+app.use(session({
+  key: 'mt', // cookies中存储的字段名称设置
+  prefix: 'mtpr',
+  store: new Redis()
+}))
 
 // middlewares
 app.use(bodyparser({
