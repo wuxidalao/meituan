@@ -1,14 +1,29 @@
 <template>
   <div class="container">
     <div>
-     2222222222222222
+     <ul>
+       <li v-for="(item,idx) in $store.state.navbar.app" :key="idx">{{item}}</li>
+     </ul>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  
+  data() {
+    return {
+      list: []
+    }
+  },
+  async asyncData() {
+    let {status, data: {list}} = await axios.get('http://localhost:3000/city/list')
+    if (status === 200) {
+      return {
+        list
+      }
+    }
+  }
 }
 </script>
 
