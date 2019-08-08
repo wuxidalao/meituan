@@ -14,6 +14,6 @@ export default {
 </script>
 
 <style <style lang="scss">
-@import '../../../assets/css/iconfont.css'
+// @import '../../../assets/css/iconfont.css'
 
 </style>
