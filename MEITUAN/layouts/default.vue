@@ -3,7 +3,7 @@
     <el-header>
       <my-header/>
     </el-header>
-    <el-main><nuxt /></el-main>
+    <el-main><nuxt/></el-main>
     <el-footer>foot</el-footer>
   </el-container>
 </template>
@@ -17,6 +17,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import '@/assets/css/public/layout.scss';
 </style>

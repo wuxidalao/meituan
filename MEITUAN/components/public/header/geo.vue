@@ -1,8 +1,8 @@
 <template>
   <div class="m-geo">
     <i class="iconfont">&#xe76f;</i>北京市
-    <el-link type="primary" class="changeCity" to="/changeCity">切换城市</el-link>
-    [塑料袋 数据的浪费 收到了]
+    <nuxt-link type="primary" class="changeCity" to="/changeCity">切换城市</nuxt-link>
+    [塑料袋 收到了]
   </div>
 </template>
 
@@ -14,6 +14,5 @@ export default {
 </script>
 
 <style <style lang="scss">
-// @import '../../../assets/css/iconfont.css'
 
 </style>
