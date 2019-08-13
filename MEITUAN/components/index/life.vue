@@ -14,7 +14,12 @@
         </div>
       </el-col>
     </el-row>
-    <el-row></el-row>
+    <el-row class="m-life-bottom">
+      <el-col :span="7">1</el-col>
+      <el-col :span="7">2</el-col>
+      <el-col :span="4">3</el-col>
+      <el-col :span="6">4</el-col>
+    </el-row>
   </div>
 </template>
 
@@ -37,6 +42,13 @@ export default {
 .m-life {
   height: 240px;
   width: 950px;
+  .m-life-bottom {
+    margin-top: 10px;
+    .el-col {
+      margin-left: 10px;
+      background: #ccc;
+    }
+  }
   .life-banner {
     margin-left: 12px;
   }
