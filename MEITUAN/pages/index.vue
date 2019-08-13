@@ -1,8 +1,12 @@
 <template>
   <div class="page-index">
     <el-row>
-      <el-col :span="5"><emenu/></el-col>
-      <el-col :span="19">222</el-col>
+      <el-col :span="5">
+        <emenu/>
+      </el-col>
+      <el-col :span="19">
+        <llife/>
+      </el-col>
     </el-row>
     <el-row>
       <el-col :span="24">333</el-col>
@@ -12,9 +16,11 @@
 
 <script>
 import Emenu from '@/components/index/menu.vue'
+import Llife from '@/components/index/life.vue'
 export default {
   components: {
-    Emenu
+    Emenu,
+    Llife
   }
 }
 </script>
