@@ -1,6 +1,5 @@
 <template>
-    <div class="block">
-      <!-- <span class="demonstration">默认 Hover 指示器触发</span> -->
+    <div class="m-slider">
       <el-carousel height="240px">
         <el-carousel-item v-for="(item, index) in sliderList" :key="index">
           <h3 class="small"><img class="img" :src="item.url"/></h3>
@@ -14,9 +13,9 @@ export default {
   data() {
     return {
       sliderList: [
-       { url : 'http://p0.meituan.net/codeman/33ff80dc00f832d697f3e20fc030799560495.jpg'},
-       { url : 'http://p0.meituan.net/codeman/33ff80dc00f832d697f3e20fc030799560495.jpg'},
-       { url : 'http://p0.meituan.net/codeman/33ff80dc00f832d697f3e20fc030799560495.jpg'}
+       { url : 'https://p1.meituan.net/travelcube/01d2ab1efac6e2b7adcfcdf57b8cb5481085686.png'},
+       { url : 'https://p1.meituan.net/travelcube/01d2ab1efac6e2b7adcfcdf57b8cb5481085686.png'},
+       { url : 'https://p1.meituan.net/travelcube/01d2ab1efac6e2b7adcfcdf57b8cb5481085686.png'}
       ]
     }
   }
@@ -24,12 +23,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.m-slider {
+  height: 100%;
+  width: 100%;
   .img {
-    width: 550px;
     height: 240px;
+    width: 100%;
   }
-  .el-carousel__arrow {
-    background-color: rgba(31,45,61,.8) !important;
-  }
+}
 
 </style>
