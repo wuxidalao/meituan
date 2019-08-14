@@ -4,16 +4,16 @@
       <div class="top-gediao">有格调</div>
       <div class="top-menu">
         <ul v-for="(item, index) in artisticList" :key="index">
-          <li>{{item.name}}</li>
+          <li @mouseenter="mouseenterMenu" @mouseleave="mouseleaveMenu">{{item.name}}</li>
         </ul>
         <div class="menu-icon"></div>
       </div>
     </div>
     <div class="artistic-main">
-      <template v-for="(val, index) in item">
+      <template v-for="(item, index) in artisticListChild">
         <nuxt-link to="/" :key="index">
           <div class="main-box">
-            <img class="main-img" :src="val.img" />
+            <img class="main-img" :src="item.img" />
             <h4 class="title">德香苑北京烤鸭（锦华万达店）</h4>
             <p class="brief">2人套餐，提供免费WiFi</p>
             <div class="price-district">
@@ -31,6 +31,7 @@
 export default {
   data() {
     return {
+      kind: '',
       artisticList: [
         {
           name: '全部',
@@ -138,6 +139,21 @@ export default {
           ]
         }
       ]
+    }
+  },
+  computed: {
+    artisticListChild() {
+      return this.artisticList.filter((item)=> {
+        // console.log(item)
+      })[0]
+    }
+  },
+  methods: {
+    mouseenterMenu(e) {
+      
+    },
+    mouseleaveMenu() {
+
     }
   }
 }
