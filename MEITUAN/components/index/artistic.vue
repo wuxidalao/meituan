@@ -4,21 +4,21 @@
       <div class="top-gediao">有格调</div>
       <div class="top-menu">
         <ul v-for="(item, index) in artisticList" :key="index">
-          <li @mouseenter="mouseenterMenu" @mouseleave="mouseleaveMenu">{{item.name}}</li>
+          <li @click="cur=index" :class="{active:cur==index}">{{item.name}}</li>
         </ul>
         <div class="menu-icon"></div>
       </div>
     </div>
     <div class="artistic-main">
-      <template v-for="(item, index) in artisticListChild">
+      <template v-for="(item, index) in artisticListChild" v-show="cur==index">
         <nuxt-link to="/" :key="index">
           <div class="main-box">
             <img class="main-img" :src="item.img" />
-            <h4 class="title">德香苑北京烤鸭（锦华万达店）</h4>
-            <p class="brief">2人套餐，提供免费WiFi</p>
+            <h4 class="title">{{item.title}}</h4>
+            <p class="brief">{{item.brief}}</p>
             <div class="price-district">
-              <div class="price"><span>￥</span>118<del>门市价210</del></div>
-              <div class="district">锦江区</div>
+              <div class="price"><span>￥</span>{{item.price}}<del>门市价{{item.counterPrice}}</del></div>
+              <div class="district">{{item.district}}</div>
             </div>
           </div>
         </nuxt-link>
@@ -31,7 +31,7 @@
 export default {
   data() {
     return {
-      kind: '',
+      cur: 0,
       artisticList: [
         {
           name: '全部',
@@ -142,19 +142,12 @@ export default {
     }
   },
   computed: {
-    artisticListChild() {
-      return this.artisticList.filter((item)=> {
-        // console.log(item)
-      })[0]
+    artisticListChild(index) {
+      return this.artisticList[index].child
     }
   },
   methods: {
-    mouseenterMenu(e) {
-      
-    },
-    mouseleaveMenu() {
-
-    }
+    
   }
 }
 </script>
