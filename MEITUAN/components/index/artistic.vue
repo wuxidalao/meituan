@@ -4,13 +4,12 @@
       <div class="top-gediao">有格调</div>
       <div class="top-menu">
         <ul v-for="(item, index) in artisticList" :key="index">
-          <li @click="cur=index" :class="{active:cur==index}">{{item.name}}</li>
+          <li @mouseenter="cur=index" :class="{active:cur}">{{item.name}}<div :class="[isActive == index ? 'menu-icon' : '']"></div></li>
         </ul>
-        <div class="menu-icon"></div>
       </div>
     </div>
     <div class="artistic-main">
-      <template v-for="(item, index) in artisticListChild" v-show="cur==index">
+      <template v-for="(item, index) in artisticList[cur].child" v-show="cur">
         <nuxt-link to="/" :key="index">
           <div class="main-box">
             <img class="main-img" :src="item.img" />
@@ -31,6 +30,7 @@
 export default {
   data() {
     return {
+      isActive: true,
       cur: 0,
       artisticList: [
         {
@@ -38,6 +38,22 @@ export default {
           child: [
             {
               img: '//p1.meituan.net/msmerchant/74739119ea4867c9f1aea13dbcaa1339160451.jpg@368w_208h_1e_1c',
+              title: '德香苑北京烤鸭（锦华万达店）',
+              brief: '2人套餐，提供免费WiFi',
+              price: '118',
+              counterPrice: '210',
+              district: '锦江区'
+            },
+            {
+              img: '//p0.meituan.net/msmerchant/7e10e1205fe6bd5a7d53245459a61d9c6384935.jpg@368w_208h_1e_1c',
+              title: '德香苑北京烤鸭（锦华万达店）',
+              brief: '2人套餐，提供免费WiFi',
+              price: '118',
+              counterPrice: '210',
+              district: '锦江区'
+            },
+            {
+              img: '//p0.meituan.net/msmerchant/7e10e1205fe6bd5a7d53245459a61d9c6384935.jpg@368w_208h_1e_1c',
               title: '德香苑北京烤鸭（锦华万达店）',
               brief: '2人套餐，提供免费WiFi',
               price: '118',
@@ -142,9 +158,7 @@ export default {
     }
   },
   computed: {
-    artisticListChild(index) {
-      return this.artisticList[index].child
-    }
+
   },
   methods: {
     
@@ -171,7 +185,7 @@ export default {
     }
     .top-menu {
       color: #fff;
-      position: relative;
+      cursor: pointer;
       ul {
         text-decoration: none;
         list-style: none;
@@ -180,29 +194,33 @@ export default {
         float: left;
         padding: 0 5px;
         font-size: 16px;
+        position: relative;
       }
       .menu-icon {
         position: absolute;
-        top: 27px;
-        left: 90px;
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%,-50%);
         width:0;
         height:0;
         line-height:0;
         border-width:9px;
         border-style:solid;
-        border-color: transparent transparent #fff transparent;
+        border-color: transparent transparent red transparent;
       }
     }
   }
   .artistic-main {
     width: 100%;
-    height: 500px;
+    overflow: auto;
     border: solid 1px #ccc;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 15px;
     .main-box {
-      width: 33.33%;
-      margin: 5px;;
+      width: 30.5%;
+      margin: 15px;
+      float: left;
+
       .main-img {
         width: 100%;
         height: 208px;
