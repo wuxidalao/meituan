@@ -6,7 +6,7 @@
     <div class="main-box">
       <div class="main-img"></div>
       <div class="main-login">
-        <div class="login-type"><a href="##">手机动态码登录<i class="iconfont">&#xe632;</i></a><p>账户登录</p></div>
+        <div class="login-type"><p>手机动态码登录<i class="iconfont">&#xe632;</i></p><p>账户登录</p></div>
         <el-input
           placeholder="请输入内容"
           >
