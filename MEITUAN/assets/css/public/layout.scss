@@ -1,8 +1,13 @@
-.el-header,.el-main,.el-footer{
+.el-header,.el-main{
     width: 1190px;
     margin: 0 auto;
     padding: 0;
     overflow: unset;
+}
+.el-footer{
+    width: 100%;
+    padding: 0;
+    margin: 50px 0 0 0;
 }
 
 .el-main {
