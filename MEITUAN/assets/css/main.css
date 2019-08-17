@@ -1,20 +1,20 @@
 @font-face {
-  font-family: 'iconfont';
-  /* project id 682850 */
-  src: url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.eot');
-  src: url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.woff') format('woff'),
-    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1341217 */
+  src: url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.eot');
+  src: url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1341217_s9u9i1yvup.svg#iconfont') format('svg');
 }
 
-@font-face {
-  font-family: 'meituan';
-  src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484);
-    src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484#iefix) format('embedded-opentype'),
-    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.woff?t=1503027869484) format('woff'),
-    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.ttf?t=1503027869484) format('truetype'),
-    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.svg?t=1503027869484#home-category-iconfont) format('svg')
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .layout-blank{
@@ -34,12 +34,12 @@ body *{
   padding: 0;
 }
 
-footer{
-  text-align: center;
+ul,li{
+  list-style-type: none;
 }
 
 a, a:hover, a:focus, a:visited{
-  color: #41B883;
+  color: #FE8C00;
 }
 
 .logo {
