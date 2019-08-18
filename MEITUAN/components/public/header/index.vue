@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import topBar from './topbar'
+import topBar from './topbar/topbar'
 import searchBar from './searchbar'
 
 export default {
@@ -21,6 +21,32 @@ export default {
 }
 </script>
 <style lang="scss">
-  @import "@/assets/css/public/header/index.scss";
+.m-header{
+  @at-root .layout-default{
+    .el-header{
+      .m-header {
+        width: 100%;
+      }
+    }
+  }
+  >.el-row:nth-child(1){
+    width: 1190px;
+    margin: 0 auto;
+    z-index: 9999;
+    height: 40px;
+    line-height: 40px;
+  }
+  >.el-row:nth-child(2){
+    background: #fff;
+    .search-panel{
+      width: 1190px;
+      margin: 0 auto;
+    }
+  }
+  >.el-main {
+    overflow: unset;
+  }
+}
+
 </style>
 

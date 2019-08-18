@@ -24,5 +24,40 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/css/public/layout.scss';
+.el-header,.el-main{
+    width: 1190px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: unset;
+}
+.el-footer{
+    width: 100%;
+    padding: 0;
+    margin: 50px 0 0 0;
+}
+
+.el-main {
+    margin-top: 140px;
+}
+.el-header{
+    background: #F8F8F8;
+    color: #999;
+    width: 100%;
+    font-size: 12px;
+    .m-header{
+        // width: 1190px;
+        margin: 0 auto;
+    }
+}
+
+.layout-default{
+    -webkit-font-smoothing: antialiased;
+    font-family: "-apple-system",
+    BlinkMacSystemFont,
+    Roboto,
+    "Helvetica Neue",
+    "MIcrosoft YaHei",
+    sans-serif !important;
+    background-color: #F8F8F8;
+}
 </style>
