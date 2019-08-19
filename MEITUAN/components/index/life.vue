@@ -7,8 +7,8 @@
         <div class="life-login">
           <img class="user-img" :src="userImg"/>
           <p>Hi！ 你好</p>
-          <el-button round>注册</el-button>
-          <el-button round>立即登录</el-button>
+          <el-button round><nuxt-link to="/register">注册</nuxt-link></el-button>
+          <el-button round><nuxt-link to="/login">立即登录</nuxt-link></el-button>
         </div>
       </el-col>
     </el-row>
