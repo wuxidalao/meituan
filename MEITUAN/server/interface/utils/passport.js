@@ -5,25 +5,25 @@
 
 // passport-local用于使用用户名和密码进行身份验证的Passport策略
 
-import passport from 'koa-passport'
-import LocalStrategy from 'passport-local'
-import UserModel from '../../dbs/models/users'
+const passport = require('koa-passport')
+const LocalStrategy = require('passport-local')
+const UserModel = require('../../dbs/models/users')
 
 // 登录验证
 passport.use(new LocalStrategy(
-  function(username,password,done){
-    let where = {
+  async function(username,password,done){
+    const where = {
       username
     }
-    let result = await UserModel.findOne(where)
-    if(result!==null){
+    const result = await UserModel.findOne(where)
+    if (result !== null) {
       if(result.password === password){
-        return done(null,result)
-      }else{
-        return done(null,false,'密码错误')
+        return done(null, result)
+      }else {
+        return done(null, false, '密码错误')
       }
-    }else{
-      return done(null,false,'用户不存在')
+    }else {
+      return done(null, false, '用户不存在')
     }
   }
 ))
@@ -37,4 +37,4 @@ passport.deserializeUser(function(user, done) {
   return done(null,user)
 })
 
-export default passport
+module.exports = passport

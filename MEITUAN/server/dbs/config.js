@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   // mongo 连接地址
   dbs: 'mongodb://127.0.0.1:27017/student',
   // redis 地址和端口

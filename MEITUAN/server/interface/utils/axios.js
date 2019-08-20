@@ -1,4 +1,4 @@
-import axios from 'axios'
+const axios = require('axios')
 // 创建接口实例
  const instance = axios.create({
    baseURL: `http://${process.env.HOST||'localhost'}:${process.env.PORT||3000}`, // process.env.HOST地址||localhost地址:process.env.PORT端口||3000端口
@@ -8,4 +8,4 @@ import axios from 'axios'
    }
  })
 
- export default instance
+module.exports = instance
