@@ -20,18 +20,18 @@ module.exports = {
     },
     get pass() {
       return 'vgghaqsojuhoegdh' // 授权码
-    }
-  },
-  // 生成邮箱验证码
-  get code() {
-    return ()=> {
-      return Math.random().toString(16).slice(2,6).toUpperCase()
-    }
-  },
-  // 定义验证码过期时间rules，1小时
-  get expire() {
-    return ()=> {
-      return new Date().getTime()+60*60*1000 //过期时间
+    },
+      // 生成邮箱验证码
+    get code() {
+      return ()=> {
+        return Math.random().toString(16).slice(2,6).toUpperCase()
+      }
+    },
+    // 定义验证码过期时间rules，1小时
+    get expire() {
+      return ()=> {
+        return new Date().getTime()+60*60*1000 //过期时间
+      }
     }
   }
 }

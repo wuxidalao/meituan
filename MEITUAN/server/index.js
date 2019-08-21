@@ -9,7 +9,7 @@ const Redis = require('koa-redis')
 const json = require('koa-json')
 const dbConfig = require('./dbs/config')
 const passport = require('./interface/utils/passport')
-const users = require('./interface/users').router
+const users = require('./interface/users')
 
 const app = new Koa()
 
