@@ -77,19 +77,24 @@ export default {
       const self = this
       let namePass
       let emailPass
+      
       if(self.timerid){
         return false
       }
+
       this.$refs['ruleForm'].validateField('name', (valid) => {
         namePass = valid
       })
       self.statusMsg = ''
+
       if(namePass) {
         return false
       }
+
       this.$refs['ruleForm'].validateField('email', (valid) => {
         emailPass = valid
       })
+
       if(!namePass && !emailPass) {
         self.$axios.post('/users/verify', {
           username: encodeURIComponent(self.ruleForm.name),
@@ -102,10 +107,10 @@ export default {
               self.statusMsg = `验证码已发送，剩余${count--}秒`
               if(count === 0) {
                 clearInterval(self.timerid)
-              }else {
-                self.statusMsg = data.msg
               }
             },1000)
+          }else {
+            self.statusMsg = data.msg
           }
         })
       }
