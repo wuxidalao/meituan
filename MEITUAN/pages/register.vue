@@ -28,6 +28,7 @@
 </template>
 
 <script>
+const CryptoJS = require('crypto-js')
 export default {
   layout: 'blank',
   data() {
@@ -77,7 +78,7 @@ export default {
       const self = this
       let namePass
       let emailPass
-      
+
       if(self.timerid){
         return false
       }
@@ -107,6 +108,7 @@ export default {
               self.statusMsg = `验证码已发送，剩余${count--}秒`
               if(count === 0) {
                 clearInterval(self.timerid)
+                self.statusMsg = ''
               }
             },1000)
           }else {
@@ -116,7 +118,30 @@ export default {
       }
     },
     register() {
-
+      let self = this
+      this.$refs['ruleForm'].validate((valid) => {
+        if(valid) {
+          self.$axios.post('/users/singnup', {
+            username: window.encodeURIComponent(self.ruleForm.name),
+            password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
+            email: self.ruleForm.email,
+            code: self.ruleForm.code
+          }).then((status, data) => {
+            if(status === 200) {
+              if(data && data.code === 0) {
+                location.href = '/login'
+              }else {
+                self.error = data.msg
+              }
+            }else{
+              self.error = `服务器出错，错误码：${status}`
+            }
+            setTimeout(function(){
+              self.error = ''
+            },3000)
+          })
+        }
+      })
     }
   } 
 }
