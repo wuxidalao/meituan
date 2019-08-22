@@ -53,7 +53,7 @@ export default {
       },
       rules: {
         name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
         email: [
@@ -121,15 +121,18 @@ export default {
       let self = this
       this.$refs['ruleForm'].validate((valid) => {
         if(valid) {
-          self.$axios.post('/users/singnup', {
-            username: window.encodeURIComponent(self.ruleForm.name),
+          self.$axios.post('/users/signup', {
+            username: encodeURIComponent(self.ruleForm.name),
             password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
             email: self.ruleForm.email,
             code: self.ruleForm.code
           }).then((status, data) => {
             if(status === 200) {
               if(data && data.code === 0) {
-                location.href = '/login'
+                // location.href = '/login'
+                this.$router.push({
+                  path: '/login'
+                })
               }else {
                 self.error = data.msg
               }

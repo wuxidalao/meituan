@@ -1,10 +1,3 @@
-// import Router from 'koa-router'
-// import Redis from 'koa-redis'
-// import nodeMailer from 'nodemailer'
-// import User from '../dbs/models/users'
-// import Passport from './utils/passport'
-// import axios from './utils/axios'
-// import Email from '../dbs/config'
 const Router = require('koa-router')
 const Redis = require('koa-redis')
 const nodeMailer = require('nodemailer')
@@ -13,13 +6,12 @@ const Passport = require('./utils/passport')
 const axios = require('./utils/axios')
 const Email = require('../dbs/config')
 
-
-const router = new Router({
+let router = new Router({
   prefix: '/users'
 })
 
 // 获取redis的客户端
-const Store = new Redis().client
+let Store = new Redis().client
 
 // 1.注册接口
 router.post('/signup', async (ctx)=> {
@@ -59,7 +51,7 @@ router.post('/signup', async (ctx)=> {
   }
 
   // 用户名是否已存在
-  const user = await User.find({
+  let user = await User.find({
     username
   })
   if(user.length){
@@ -71,7 +63,7 @@ router.post('/signup', async (ctx)=> {
   }
 
   // 写入数据库
-  const nuser = await User.create({
+  let nuser = await User.create({
     username,
     password,
     email
@@ -79,11 +71,11 @@ router.post('/signup', async (ctx)=> {
 
   // 注册成功跳转登录
   if(nuser){
-    const res = await axios.post('/users/signin',{
+    let res = await axios.post('/users/signin',{
       username,
       password
     })
-    if(res.data&&res.data.code === 0){
+    if(res.data && res.data.code === 0){
       ctx.body = {
         code: 0,
         msg: '注册成功！',
