@@ -7,16 +7,17 @@
       <div class="main-img"></div>
       <div class="main-login">
         <div class="login-type"><p>手机动态码登录<i class="iconfont">&#xe632;</i></p><p>账户登录</p></div>
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
-          <el-form-item prop="email">
-            <el-input placeholder="请输入邮箱" v-model="ruleForm.email" prefix-icon="el-icon-user"></el-input>
+        <el-form class="demo-ruleForm">
+          <el-form-item prop="username">
+            <el-input placeholder="请输入邮箱" v-model="username" prefix-icon="el-icon-user"></el-input>
           </el-form-item>
-          <el-form-item prop="pwd" class="marginBottom">
-            <el-input placeholder="请输入密码" v-model="ruleForm.pwd" prefix-icon="el-icon-lock" type="password"></el-input>
+          <el-form-item class="marginBottom" prop="password">
+            <el-input placeholder="请输入密码" v-model="password" prefix-icon="el-icon-lock" type="password"></el-input>
             <a href="##" class="forgetPwd">忘记密码</a>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" class="loginBtn" @click="onSubmit">登录</el-button>
+            <p v-if="error">{{error}}</p>
             <p>还没有账号，<a href="/register">免费注册</a></p>
           </el-form-item>
         </el-form>
@@ -32,23 +33,15 @@
 </template>
 
 <script>
+const CryptoJS = require('crypto-js')
 export default {
   layout: 'null',
   data() {
     return {
-      ruleForm: {
-        email: '',
-        pwd: ''
-      },
-      rules: {
-        email: [
-          { required: true, message: '请输入邮箱', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-        ],
-        pwd: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-        ]
-      },
+      checked: '',
+      username: '',
+      password: '',
+      error: '',
       loginFootList: [
         '关于美团','关于美团','关于美团','关于美团','关于美团'
       ]
@@ -56,7 +49,24 @@ export default {
   },
   methods: {
     onSubmit() {
-
+      let self = this
+      self.$axios.post('/users/signin', {
+        username: encodeURIComponent(self.username),
+        password: CryptoJS.MD5(self.password).toString()
+      }).then((status, data) => {
+        if(status === 200) {
+          if(data && data.code === 0) {
+            location.href = '/'
+          }else {
+            self.error = data.msg
+          }
+        }else {
+          self.error = `服务器出错，错误码：${status}`
+          setTimeout(function(){
+            self.error = ''
+          },3000)
+        }
+      })
     }
   }
 }
