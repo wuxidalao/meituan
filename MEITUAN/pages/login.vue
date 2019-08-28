@@ -6,7 +6,7 @@
     <div class="login-main">
       <div class="main-img"></div>
       <div class="main-login">
-        <div class="login-type"><p>手机动态码登录<i class="iconfont">&#xe632;</i></p><p>账户登录</p></div>
+        <div class="login-type"><!-- <p>手机动态码登录<i class="iconfont">&#xe632;</i></p> --><p>账户登录</p></div>
         <el-form class="demo-ruleForm">
           <el-form-item prop="username">
             <el-input placeholder="请输入邮箱" v-model="username" prefix-icon="el-icon-user"></el-input>
@@ -56,7 +56,7 @@ export default {
       }).then((status, data) => {
         if(status === 200) {
           if(data && data.code === 0) {
-            location.href = '/'
+            window.location.href = '/'
           }else {
             self.error = data.msg
           }
